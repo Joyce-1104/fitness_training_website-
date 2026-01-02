@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Membership Plans{% endblock %}
+
+{% block content %}
+
+<div class="header">OUR MEMBERSHIP PLANS</div>
+
+<div class="container">
+
+    <!-- Basic Plan -->
+    <div class="plan-box">
+        <div class="plan-title">Basic Plan</div>
+        <div class="price">₹499 / month</div>
+        <ul>
+            <li>✔ Access to gym floor</li>
+            <li>✔ Basic equipment usage</li>
+            <li>✔ Locker access</li>
+            <li>✘ No personal trainer</li>
+        </ul>
+        <button class="book-btn js-book-consult">JOIN NOW</button>
+    </div>
+
+    <!-- Standard Plan -->
+    <div class="plan-box">
+        <div class="plan-title">Standard Plan</div>
+        <div class="price">₹999 / month</div>
+        <ul>
+            <li>✔ Access to gym floor</li>
+            <li>✔ All equipment usage</li>
+            <li>✔ 2 Personal sessions weekly</li>
+            <li>✔ Free diet consultation</li>
+        </ul>
+        <button class="book-btn js-book-consult">JOIN NOW</button>
+    </div>
+
+    <!-- Premium Plan -->
+    <div class="plan-box">
+        <div class="plan-title">Premium Plan</div>
+        <div class="price">₹1499 / month</div>
+        <ul>
+            <li>✔ Unlimited access</li>
+            <li>✔ Personal trainer</li>
+            <li>✔ Customized diet plan</li>
+            <li>✔ Weekly body analysis</li>
+            <li>✔ Steam bath & relaxation zone</li>
+        </ul>
+        <button class="book-btn js-book-consult">JOIN NOW</button>
+    </div>
+
+</div>
+
+{% endblock %}

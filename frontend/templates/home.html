@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>Transform Your Body,<br />Transform Your Life</h1>
+    <p>Join our expert-led training programs and achieve your fitness goals.</p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section">
+  <img src="{% static 'images/logo.png' %}" alt="ALMI Fitness Logo">
+
+  <div class="about-text">
+    <h2>Welcome to ALMI_S Fitness Center</h2>
+    <p>
+      We offer personalized fitness programs to help you achieve your health and
+      wellness goals. Our expert trainers guide you every step of the way...
+    </p>
+  </div>
+</section>
+
+<!-- GYM IMAGES -->
+<section class="gym-section">
+  <img
+    src="https://i.pinimg.com/736x/1d/44/ec/1d44ecab1591013165637b637615d7a1.jpg"
+  />
+  <img
+    src="https://i.pinimg.com/1200x/1e/05/0b/1e050bcc880ad6490e3cb135ed5b097b.jpg"
+  />
+  <img
+    src="https://i.pinimg.com/1200x/7e/1f/5b/7e1f5b70fa4e9d22e0e11024c8c7a777.jpg"
+  />
+  <img
+    src="https://i.pinimg.com/1200x/c0/17/60/c01760924cfc783be218da6d340289a3.jpg"
+  />
+  <img
+    src="https://i.pinimg.com/1200x/4f/04/26/4f0426c5d01e7ff68d083a2c88e97722.jpg"
+  />
+  <img
+    src="https://i.pinimg.com/736x/58/0b/47/580b478e686d5a3e68a15d3be64b6b01.jpg"
+  />
+  <img
+    src="https://i.pinimg.com/1200x/76/16/22/761622051e28ed63b3f09c20bd199828.jpg"
+  />
+  <img
+    src="https://i.pinimg.com/736x/5d/55/a6/5d55a6d4f4b66609f05344ead02228aa.jpg"
+  />
+</section>
+<!-- FITNESS STATS SECTION -->
+<section style="
+  background:#000;
+  color:#fff;
+  padding:80px 40px;
+">
+
+  <div style="
+    max-width:1100px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+    gap:40px;
+    text-align:center;
+  ">
+
+    <!-- STAT 1 -->
+    <div>
+      <p style="font-size:1rem;color:#aaa;margin-bottom:10px;">
+        Men Joined
+      </p>
+      <h2 style="font-size:4rem;font-weight:800;color:#fff;">
+        500+
+      </h2>
+    </div>
+
+    <!-- STAT 2 -->
+    <div>
+      <p style="font-size:1rem;color:#aaa;margin-bottom:10px;">
+        Women Joined
+      </p>
+      <h2 style="font-size:4rem;font-weight:800;color:#fff;">
+        1000+
+      </h2>
+    </div>
+
+    <!-- STAT 3 -->
+    <div>
+      <p style="font-size:1rem;color:#aaa;margin-bottom:10px;">
+        Awarded Bodybuilders
+      </p>
+      <h2 style="
+        font-size:4rem;
+        font-weight:800;
+        background:linear-gradient(45deg,#8b0000,#ff0000,#ff4d4d);
+        -webkit-background-clip:text;
+        -webkit-text-fill-color:transparent;
+      ">
+        50+
+      </h2>
+    </div>
+
+  </div>
+
+</section>
+<!-- PROGRAMS -->
+<section class="programs-grid">
+  <div class="project-section">
+    <div class="content-box">
+      <h2>Check Out Our Classes</h2>
+      <p>
+        Looking to get fit, learn to defend yourself, or start your MMA journey?
+        Our classes combine scientific training methods, mindset development...
+      </p>
+    </div>
+  </div>
+
+  
+<!-- FOOTER -->
+<footer>
+  <h2>Let’s Talk!</h2>
+  <p>We provide fitness options suitable for everyone.</p>
+  <button class="footer-btn js-book-consult">Book a Consult</button>
+</footer>
+
+<div class="footer-contact-wrapper">
+  <div class="footer-contact">
+    <div>
+      <h4>OUR HQ (10AM to 6PM)</h4>
+      <p>1 Floor, Madley Rd, T. Nagar, Chennai</p>
+      <a href="#" style="color: white">View on map</a>
+    </div>
+
+    <div>
+      <h4>Contact</h4>
+      <p>+91 95662 08724</p>
+    </div>
+  </div>
+</div>
+
+<div class="footer-bottom">
+  COPYRIGHT © 2025 – ALMI_S FITNESS PRIVATE LIMITED<br />
+</div>
+
+
+{% endblock %}

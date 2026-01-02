@@ -1,0 +1,83 @@
+{% load static %}
+
+<nav class="navbar">
+  <div class="logo">
+    <a href="{% url 'home' %}">
+      <img src="{% static 'images/logo.png' %}" alt="ALMI Fitness Logo" />
+    </a>
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="{% url 'home' %}">HOME</a></li>
+    <li><a href="{% url 'programs' %}">PROGRAMS</a></li>
+    <li><a href="{% url 'blog' %}">BLOG</a></li>
+    <li><a href="{% url 'trainers' %}">TRAINERS</a></li>
+    <li><a href="{% url 'sucess_stories' %}">SUCESS STORIES</a></li>
+    <li><a href="{% url 'membership' %}">MEMBERSHIP</a></li>
+    <li><a href="{% url 'contact' %}">CONTACT</a></li>
+
+    {% if user.is_authenticated %}
+    {% with profile=user.fitnessprofile|default_if_none:'' %}
+    <li class="nav-user-menu-item">
+      <div class="nav-user-menu" onclick="toggleProfileDropdown(event)">
+        <div class="profile-toggle">
+          
+          <span class="menu-dots">⋮</span>
+        </div>
+
+        <!-- DROPDOWN -->
+        <div class="profile-dropdown" id="profileDropdown">
+          <div class="dropdown-header">
+            {% if profile and profile.profile_image %}
+              <img src="{{ profile.profile_image.url }}" class="profile-mini-pic" alt="Profile">
+            {% else %}
+              <img src="{% static 'images/default_user.png' %}" class="profile-mini-pic" alt="Profile">
+            {% endif %}
+            <p class="dropdown-username">
+              {{ user.first_name|default:user.username }}
+            </p>
+          </div>
+
+          <a href="{% url 'report' %}" class="dropdown-link">PROFILE REPORT</a>
+          <hr>
+          <a href="{% url 'logout' %}" class="dropdown-link logout">LOGOUT</a>
+        </div>
+      </div>
+    </li>
+    {% endwith %}
+    {% else %}
+    <li>
+      <a href="{% url 'login' %}" class="login-btn">LOGIN</a>
+    </li>
+    {% endif %}
+  </ul>
+
+  <button class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<script>
+  const toggle = document.getElementById("menuToggle");
+  const navLinks = document.getElementById("navLinks");
+
+  toggle.addEventListener("click", () => {
+    toggle.classList.toggle("active");
+    navLinks.style.display =
+      navLinks.style.display === "flex" ? "none" : "flex";
+  });
+
+  function toggleProfileDropdown(event) {
+    event.stopPropagation();
+    document.getElementById("profileDropdown").classList.toggle("show");
+  }
+
+  window.addEventListener("click", function (event) {
+    if (!event.target.closest(".nav-user-menu")) {
+      const dropdown = document.getElementById("profileDropdown");
+      if (dropdown) dropdown.classList.remove("show");
+    }
+  });
+</script>

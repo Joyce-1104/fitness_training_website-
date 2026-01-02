@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Success Stories{% endblock %}
+
+{% block content %}
+
+<section class="testimonials">
+    <div class ="header">SUCCESS-STORIES</div>
+
+    <div class="card-container">
+
+        <div class="card">
+            <div class="card-img">
+                <img src="https://www.shutterstock.com/image-photo/portrait-mature-man-before-after-260nw-1303099510.jpg" alt="">
+            </div>
+            <h3>Kevin Lorenz</h3>
+            <p>A powerful transformation built through discipline, consistency, and smart training.</p>
+            
+        </div>
+
+        <div class="card">
+            <div class="card-img">
+                <img src="https://cdn.images.express.co.uk/img/dynamic/1/590x/1679677_1.jpg" alt="">
+            </div>
+            <h3>Harry Patterson</h3>
+            <p>Proved that results come when dedication meets the right guidance.</p>
+          
+        </div>
+
+        <div class="card">
+            <div class="card-img">
+                <img src="https://t4.ftcdn.net/jpg/15/46/91/75/360_F_1546917542_e3BdvBMI52XHfspV3RBrob9Wdt1Dh932.jpg" alt="">
+            </div>
+            <h3>Julia Smith</h3>
+            <p>Proof that anyone can transform with the right mindset and routine.</p>
+      
+        </div>
+
+    </div>
+
+    <p class="credit">Image from user's permission</p>
+</section>
+
+<script>
+    document.querySelectorAll(".card").forEach(card => {
+        card.addEventListener("mousemove", e => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+
+            // Correct JS template literal
+            card.style.transform =
+                `rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+        });
+
+        card.addEventListener("mouseleave", () => {
+            card.style.transform = "rotateX(0deg) rotateY(0deg) scale(1)";
+        });
+    });
+</script>
+
+{% endblock %}

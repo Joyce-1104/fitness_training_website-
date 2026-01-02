@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="auth-container">
+    <h2>Complete Your Profile</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+
+        <label>Age</label>
+        <input type="number" name="age" required>
+
+        <label>Weight (kg)</label>
+        <input type="number" name="weight" required>
+
+        <label>Height (cm)</label>
+        <input type="number" name="height" required>
+
+        <label for="interested_program">Interested Program</label>
+<select name="interested_program" id="interested_program" required>
+    <option value="">Select a program</option>
+    <option value="yoga">Yoga</option>
+    <option value="zumba">Zumba</option>
+    <option value="strength_training">Strength Training</option>
+    <option value="cardio">Cardio</option>
+    <option value="weight_loss">Weight Loss</option>
+    <option value="muscle_gain">Muscle Gain</option>
+    <option value="crossfit">CrossFit</option>
+</select>
+
+        <label>Food Habits</label>
+        <input type="text" name="food_habits">
+
+        <label>Goal</label>
+        <input type="text" name="goal">
+
+        <label>Profile Image</label>
+        <input type="file" name="profile_image">
+
+        <button type="submit">Save Profile</button>
+    </form>
+</div>
+<style>
+    select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    background: #111;
+    color: #fff;
+    border: 1px solid #333;
+}
+</style>
+
+{% endblock %}

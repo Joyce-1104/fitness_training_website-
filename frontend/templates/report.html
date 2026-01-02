@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<section class="report-section">
+
+  <div class="report-container">
+
+    <!-- Header -->
+    <div class="header">PERSONALIZED ANALYSIS</div>
+     
+<!-- MAIN REPORT -->
+<section class="report-wrapper">
+
+    <!-- METRICS CARDS -->
+    <div class="metrics-container">
+
+        <div class="metric-card">
+            <h4>Age</h4>
+            <p>{{ profile.age }} yrs</p>
+        </div>
+
+        <div class="metric-card">
+            <h4>Weight</h4>
+            <p>{{ profile.weight }} kg</p>
+        </div>
+
+        <div class="metric-card">
+            <h4>Height</h4>
+            <p>{{ profile.height }} cm</p>
+        </div>
+
+        <div class="metric-card">
+            <h4>Interested Program</h4>
+            <p>{{profile.program }}</p>
+        </div>
+
+        <div class="metric-card">
+            <h4>Goal</h4>
+            <p>{{ profile.goal }}</p>
+        </div>
+
+        <div class="metric-card">
+            <h4>Food Habits</h4>
+            <p>{{ profile.food_habits }}</p>
+        </div>
+
+    </div>
+
+    <!-- CENTER RECOMMENDATION -->
+    <div class="recommendation-center">
+        <h2>RECOMMENDED PROGRAM</h2>
+        <p>
+            Based on your goal of <strong>{{ profile.goal }}</strong> 
+            we suggest personalized workouts and nutrition plans to help you
+            achieve consistent and sustainable results.
+        </p>
+
+        <a href="{% url 'programs' %}" class="btn-recommend">
+            VIEW
+        </a>
+    </div>
+
+</section>
+<style>
+.metrics-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.metric-card {
+    background: #151515;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    border: 1px solid #333;
+}
+
+.metric-card h4 {
+    color: #ff2e2e;
+}
+
+.metric-card p {
+    font-size: 22px;
+    font-weight: bold;
+}
+.metric-card.highlight {
+    border: 2px solid #ff2e2e;
+    box-shadow: 0 0 15px rgba(255,46,46,0.4);
+}
+
+/* CENTER RECOMMENDATION */
+.recommendation-center {
+    max-width: 700px;
+    margin: 70px auto 0;
+    background: linear-gradient(135deg, #111, #1a1a1a);
+    padding: 40px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.7);
+}
+
+.recommendation-center h2 {
+    color: #ff2e2e;
+    margin-bottom: 15px;
+}
+
+.recommendation-center p {
+    color: #ccc;
+    line-height: 1.7;
+}
+
+.btn-recommend {
+    display: inline-block;
+    margin-top: 25px;
+    background: #ff2e2e;
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.btn-recommend:hover {
+    background: #e60000;
+}
+</style>
+
+
+{% endblock %}

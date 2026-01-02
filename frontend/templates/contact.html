@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Contact Us | ALMI Fitness Center{% endblock %}
+
+{% block content %}
+
+<!-- Header Section -->
+<div class="header">CONTACT US</div>
+
+<!-- Contact Section -->
+<div class="contact-container">
+
+    <!-- Contact Information -->
+    <div class="contact-info">
+        <h2>Reach Us</h2>
+
+        <div class="contact-item">
+            <span>📍 Address:</span><br>
+            Almis Fitness Center,<br>
+            1 Floor, 7-3, Madley Rd, T. Nagar, Chennai, Tamil Nadu 600017
+        </div>
+
+        <div class="contact-item">
+            <span>📞 Phone:</span><br>
+            +91 98765 43210
+        </div>
+
+        <div class="contact-item">
+            <span>📧 Email:</span><br>
+            almis_fitness@gmail.com
+        </div>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="contact-form">
+        <h2>Send a Message</h2>
+
+        <form method="POST">
+            {% csrf_token %}
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <input type="text" name="subject" placeholder="Subject" required>
+            <textarea name="message" placeholder="Your Message..." required></textarea>
+            <button class="btn">Send Message</button>
+        </form>
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,265 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Programs | Fitness
+Center{% endblock %} {% block content %}
+
+<style>
+  .programs-hero {
+    height: 60vh;
+    background: url("https://images.unsplash.com/photo-1554284126-aa88f22d8b74?w=1200")
+      center/cover no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.7);
+  }
+  .program-row {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 28px;
+    display: flex;
+    gap: 30px;
+    align-items: center;
+
+    background: #111;
+    border-radius: 18px;
+    border: 2px solid #ff2e2e;
+    box-shadow: 0 0 14px rgba(255, 46, 46, 0.25);
+  }
+
+  .program-row.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .program-image-box {
+    flex: 0 0 40%;
+    height: 180px;
+    border-radius: 14px;
+    overflow: hidden;
+  }
+
+  .program-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .program-content-box,
+  .program-text {
+    flex: 1;
+    color: #ffffff;
+  }
+
+  .program-content-box h2,
+  .program-text h2 {
+    font-size: 24px;
+    margin-bottom: 6px;
+  }
+
+  .program-content-box h3,
+  .program-text h3 {
+    font-size: 15px;
+    color: #ff2e2e;
+    margin-bottom: 12px;
+  }
+
+  .program-content-box p,
+  .program-text p {
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+
+  .program-content-box ul,
+  .program-text ul {
+    margin: 14px 0;
+    padding-left: 18px;
+  }
+
+  .program-content-box ul li,
+  .program-text ul li {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  /* Extra text */
+  .program-content-box .timing {
+    font-size: 13px;
+    opacity: 0.8;
+    margin-top: 8px;
+  }
+
+  .book-btn {
+    margin-top: 12px;
+    padding: 9px 22px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    background: #ff2e2e;
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .book-btn:hover {
+    background: #ff5555;
+  }
+
+  @media (max-width: 768px) {
+    .program-row,
+    .program-row.reverse {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .program-image-box {
+      width: 100%;
+      height: 160px;
+    }
+  }
+</style>
+<!-- HERO SECTION -->
+<section class="programs-hero">
+  <div class="overlay-box">
+    <h1 class="program-title">OUR FITNESS PROGRAMS</h1>
+    <p class="program-subtitle">
+      Explore our carefully designed fitness programs created by expert trainers
+      to help you reach your personal fitness goals.
+    </p>
+  </div>
+</section>
+
+<!-- PROGRAM 1 -->
+<section class="program-row">
+  <div class="program-image-box">
+    <img src="{% static 'images/weightloss.jpg' %}" />
+  </div>
+
+  <div class="program-text">
+    <h2>WEIGHT LOSS PROGRAM</h2>
+    <h3>Strength Training</h3>
+    <p>
+      Our Weight Loss Program combines high-intensity fat-burning workouts and a
+      structured diet plan for sustainable results.
+    </p>
+
+    <ul>
+      <li>HIIT & full-body workouts</li>
+      <li>Weekly nutrition guidance</li>
+      <li>1-on-1 trainer support</li>
+    </ul>
+    <button class="book-btn js-book-consult">Book Now</button>
+  </div>
+</section>
+
+<!-- PROGRAM 2 -->
+<section class="program-row">
+  <div class="program-content-box">
+    <h2 class="program-title">STRENGTH TRAINING</h2>
+    <h3 class="program-sub">Muscle Building & Endurance</h3>
+
+    <p>
+      Build muscle, improve endurance, and transform your physique with our
+      structured weight training sessions designed for all levels.
+    </p>
+
+    <ul class="features">
+      <li>Guided machine & free-weight training</li>
+      <li>Personalized workout charts</li>
+      <li>Muscle gain tracking</li>
+      <li>Diet support for muscle building</li>
+    </ul>
+
+    <p class="timing">Timings: Mon–Sat | 5 AM – 10 PM</p>
+
+    <button class="book-btn js-book-consult">Book Now</button>
+  </div>
+
+  <div class="program-image-box">
+    <img src="{% static 'images/strength.jpg' %}" alt="Strength Training" />
+  </div>
+</section>
+
+<!-- PROGRAM 3 -->
+<section class="program-row">
+  <div class="program-image-box">
+    <img src="{% static 'images/yoga.jpg' %}" alt="Yoga" />
+  </div>
+
+  <div class="program-content-box">
+    <h2 class="program-title">YOGA</h2>
+    <h3 class="program-sub">Flexibility & Mindfulness</h3>
+
+    <p>
+      Yoga sessions to help you improve flexibility, reduce stress, and
+      strengthen your core through guided routines.
+    </p>
+
+    <ul class="features">
+      <li>Hatha, Vinyasa & Power Yoga</li>
+      <li>Stress-relief & breathing sessions</li>
+      <li>Morning & evening batches</li>
+      <li>Beginner-friendly classes</li>
+    </ul>
+
+    <p class="timing">Timings: Mon–Sun | 6 AM – 11 AM & 5 PM – 8 PM</p>
+
+    <button class="book-btn js-book-consult">Book Now</button>
+  </div>
+</section>
+
+<!-- PROGRAM 4 -->
+<section class="program-row reverse">
+  <div class="program-content-box">
+    <h2 class="program-title">ZUMBA</h2>
+    <h3 class="program-sub">Fun Dance Workout</h3>
+
+    <p>
+      Enjoy energetic, dance-based fitness sessions designed to burn calories
+      while keeping you entertained.
+    </p>
+
+    <ul class="features">
+      <li>Dance + Cardio sessions</li>
+      <li>Music-based routines</li>
+      <li>500–800 calories per session</li>
+      <li>Fun, group-friendly classes</li>
+    </ul>
+
+    <p class="timing">Timings: Tue, Thu, Sat | 7 PM – 8 PM</p>
+
+    <button class="book-btn js-book-consult">Book Now</button>
+  </div>
+
+  <div class="program-image-box">
+    <img src="{% static 'images/zumba.jpg' %}" alt="Zumba" />
+  </div>
+</section>
+
+<!-- PROGRAM 5 -->
+<section class="program-row">
+  <div class="program-image-box">
+    <img src="{% static 'images/cardio.jpg' %}" alt="Cardio Training" />
+  </div>
+
+  <div class="program-content-box">
+    <h2 class="program-title">CARDIO TRAINING</h2>
+    <h3 class="program-sub">Stamina & Heart Health</h3>
+
+    <p>
+      Improve stamina, boost heart health, and increase energy with our powerful
+      cardio sessions designed for all age groups.
+    </p>
+
+    <ul class="features">
+      <li>Treadmill, cycling, rowing</li>
+      <li>Heart-rate monitoring</li>
+      <li>Endurance improvement plan</li>
+      <li>Beginner to advanced sessions</li>
+    </ul>
+
+    <p class="timing">Timings: Mon–Sun | 5 AM – 10 PM</p>
+
+    <button class="book-btn js-book-consult">Book Now</button>
+  </div>
+</section>
+
+{% endblock %}

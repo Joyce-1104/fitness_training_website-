@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'chatbot.css' %}">
+    <script src="{% static 'chatbot.js' %}"></script>
+    
+</head>
+
+<body>
+    
+    <header class="main-header">
+        
+        {% include 'navbar.html' %} 
+
+        {% if user.is_authenticated %}
+            {% with profile=user.fitnessprofile|default_if_none:'' %}
+                
+                <div class="nav-user-menu">
+                    
+                    <div class="profile-toggle" onclick="toggleProfileDropdown()">
+                        <span class="nav-username">
+                            Hi, {{ user.first_name|default:user.username }}
+                        </span>
+                        
+                        {% if profile and profile.profile_image %}
+                            <img src="{{ profile.profile_image.url }}" class="nav-pic">
+                        {% else %}
+                            <img src="{% static 'images/default_user.png' %}" class="nav-pic">
+                        {% endif %}
+                        
+                    </div>
+                    
+                    <div class="profile-dropdown" id="profileDropdown">
+                        <div class="dropdown-header">
+                            {% if profile and profile.profile_image %}
+                                <img src="{{ profile.profile_image.url }}" class="profile-mini-pic">
+                            {% else %}
+                                <img src="{% static 'images/default_user.png' %}" class="profile-mini-pic">
+                            {% endif %}
+                            <p class="dropdown-username">{{ user.email }}</p>
+                        </div>
+
+                        <a href="{% url 'report' %}" class="dropdown-link">View Your Detailed Report</a>
+                        <a href="{% url 'logout' %}" class="dropdown-link logout">Logout</a>
+                    </div>
+                </div>
+            {% endwith %}
+        {% endif %}
+    </header>
+
+    {% block content %}
+    
+    {% endblock %}
+
+    <script>
+        function toggleProfileDropdown() {
+            document.getElementById("profileDropdown").classList.toggle("show");
+        }
+        window.onclick = function(event) {
+            if (!event.target.closest('.profile-toggle')) {
+                var dropdowns = document.getElementsByClassName("profile-dropdown");
+                for (var i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+                    if (openDropdown.classList.contains('show')) {
+                        openDropdown.classList.remove('show');
+                    }
+                }
+            }
+        }
+    </script>
+    
+  <div class="consult-modal-overlay" id="consultModal" style="display: none">
+    <div class="consult-form-container">
+      <button class="footer-btn" id="bookConsultBtn">Book a Consult</button>
+      <h2>Book Your Free Consultation</h2>
+      <form method="POST" action="{% url 'book_consult' %}">
+         {% csrf_token %}
+        <label for="consult-name">Full Name</label>
+        <input type="text" id="consult-name" name="name" required />
+
+        <label for="consult-email">Email</label>
+        <input type="email" id="consult-email" name="email" required />
+
+        <label for="consult-date">Preferred Date</label>
+        <input type="date" id="consult-date" name="date" required />
+
+        <label for="consult-time">Preferred Time</label>
+        <input type="time" id="consult-time" name="time" required />
+        <label for ="consult-phone">Mobile Number</label>
+        <input type="text" name="phone" required>
+        
+        <button type="submit" class="btn-primary">Confirm Booking</button>
+      </form>
+    </div>
+  </div>
+</section>
+<script>
+  // --- 1. CORE FUNCTIONS (Reusable) ---
+  // These functions simply control the modal's visibility via the 'consultModal' ID
+  function openModal() {
+    const modal = document.getElementById("consultModal");
+    if (modal) {
+      modal.style.display = "flex";
+    }
+  }
+
+  function closeModal() {
+    const modal = document.getElementById("consultModal");
+    if (modal) {
+      modal.style.display = "none";
+    }
+  }
+
+  // --- 2. EVENT LISTENERS SETUP ---
+  document.addEventListener("DOMContentLoaded", () => {
+    // A. Attach the openModal function to ALL buttons with the class 'js-book-consult'
+    // This is the key change for reusability.
+    const bookConsultButtons = document.querySelectorAll(".js-book-consult");
+
+    bookConsultButtons.forEach((button) => {
+      button.addEventListener("click", (e) => {
+        e.preventDefault(); // Stop any default navigation (like an <a> tag)
+        openModal();
+      });
+    });
+
+    // B. Close modal when clicking outside the form (on the overlay)
+    const modalOverlay = document.getElementById("consultModal");
+    if (modalOverlay) {
+      modalOverlay.addEventListener("click", (event) => {
+        if (event.target === modalOverlay) {
+          closeModal();
+        }
+      });
+    }
+
+    // C. Attach closeModal to the 'X' button (for a backup if inline 'onclick' is removed)
+    const closeButton = document.querySelector(
+      ".consult-form-container .close-btn"
+    );
+    if (closeButton) {
+      closeButton.onclick = closeModal;
+    }
+  });
+</script>
+<div class="chatbot-container" id="chatbot">
+  <div class="chatbot-header" onclick="toggleChat()">YOU CAN ASK YOUR QUERIES</div>
+
+  <div class="chatbot-body" id="chatBody"></div>
+
+  <div class="chatbot-input">
+    <input type="text" id="chatInput" placeholder="Type your message..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+
+<button class="chatbot-toggle" onclick="toggleChat()">💬</button>
+
+</body>
+</html>
