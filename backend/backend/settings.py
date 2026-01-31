@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -142,13 +143,13 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR.parent, 'frontend', 'static'),
 ]
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'   # for production, not important now
+STATIC_ROOT = os.path.join(BASE_DIR / 'staticfiles' )  # for production, not important now
 
 # Base directory for static/media files
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # ===============================
 # EMAIL CONFIG (GMAIL SMTP)
 # ===============================
